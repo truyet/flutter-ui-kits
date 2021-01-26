@@ -1,15 +1,52 @@
+import 'dart:async';
+
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:product_web/models/headphone.dart';
 import 'package:product_web/utils/colors.dart';
 
-class ProductSlider extends StatelessWidget {
-  final List<String> headphones = [
-    "assets/images/headset2.png",
-    "assets/images/headset3.png",
-    "assets/images/headset4.png",
-    "assets/images/headset5.png",
-    "assets/images/headset6.png",
+class ProductSlider extends StatefulWidget {
+  @override
+  _ProductSliderState createState() => _ProductSliderState();
+}
+
+class _ProductSliderState extends State<ProductSlider> {
+  CarouselController controller;
+  @override
+  void initState() {
+    controller = CarouselController();
+    super.initState();
+  }
+
+  final List<Headphone> headphones = [
+    Headphone(
+      color: "Red",
+      image: "assets/images/headset2.png",
+      price: "\$249.99",
+    ),
+    Headphone(
+      color: "Black",
+      image: "assets/images/headset3.png",
+      price: "\$249.99",
+    ),
+    Headphone(
+      color: "Silver",
+      image: "assets/images/headset4.png",
+      price: "\$249.99",
+    ),
+    Headphone(
+      color: "Blue",
+      image: "assets/images/headset5.png",
+      price: "\$249.99",
+    ),
+    Headphone(
+      color: "Yello",
+      image: "assets/images/headset6.png",
+      price: "\$249.99",
+    )
   ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,43 +56,74 @@ class ProductSlider extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(
-            width: 40.0,
-            child: Icon(
-              FlutterIcons.chevron_left_fea,
-              color: kTextDarkColor.withOpacity(0.5),
+          InkWell(
+            onTap: () {
+              controller.previousPage();
+            },
+            child: Container(
+              width: 40.0,
+              child: Icon(
+                FlutterIcons.chevron_left_fea,
+                color: kTextDarkColor.withOpacity(0.5),
+              ),
             ),
           ),
           Expanded(
-            child: ListView.separated(
-              physics: BouncingScrollPhysics(),
-              separatorBuilder: (BuildContext context, int index) {
-                return SizedBox(
-                  width: 15.0,
-                );
-              },
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, int index) {
-                return Column(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        width: 150.0,
-                        child: Image.asset(images[index % 2]),
+            child: CarouselSlider(
+              carouselController: controller,
+              options: CarouselOptions(
+                viewportFraction: 0.2,
+                autoPlay: true,
+                enableInfiniteScroll: true,
+              ),
+              items: headphones.map((i) {
+                int currentIndex = headphones.indexOf(i);
+
+                return Builder(builder: (BuildContext context) {
+                  return Column(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          width: 150.0,
+                          child: Image.asset(
+                            headphones[currentIndex].image,
+                          ),
+                        ),
                       ),
-                    ),
-                    Text()
-                  ],
-                );
-              },
-              itemCount: images.length * 2,
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Text(
+                        headphones[currentIndex].color,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5.0,
+                      ),
+                      Text(
+                        headphones[currentIndex].price,
+                        style: TextStyle(
+                          fontSize: 13.0,
+                        ),
+                      )
+                    ],
+                  );
+                });
+              }).toList(),
             ),
           ),
-          Container(
-            width: 40.0,
-            child: Icon(
-              FlutterIcons.chevron_right_fea,
-              color: kTextDarkColor.withOpacity(0.5),
+          InkWell(
+            onTap: () {
+              controller.nextPage();
+            },
+            child: Container(
+              width: 40.0,
+              child: Icon(
+                FlutterIcons.chevron_right_fea,
+                color: kTextDarkColor.withOpacity(0.5),
+              ),
             ),
           ),
         ],
