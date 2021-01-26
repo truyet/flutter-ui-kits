@@ -6,7 +6,7 @@ class HeroSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 600.0,
+      height: 500.0,
       child: Row(
         children: [
           SizedBox(
@@ -52,11 +52,14 @@ class HeroSection extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(
+            width: 50.0,
+          ),
           Image.asset(
             "assets/images/headset1.png",
           ),
           SizedBox(
-            width: 30.0,
+            width: 50.0,
           ),
           Container(
             constraints: BoxConstraints(
@@ -84,11 +87,39 @@ class HeroSection extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 10.0,
+                  height: 20.0,
                 ),
                 RichText(
                   text: TextSpan(
-                    children: [],
+                    children: [
+                      TextSpan(
+                        text: "\$199.99",
+                        style: TextStyle(
+                          color: kTextDarkColor.withOpacity(0.5),
+                          decoration: TextDecoration.lineThrough,
+                        ),
+                      ),
+                      TextSpan(text: " " * 5),
+                      TextSpan(
+                        text: "\$179.99",
+                        style: TextStyle(),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 30.0),
+                FlatButton(
+                  color: kDarkButtonColor,
+                  onPressed: () {},
+                  padding: EdgeInsets.symmetric(
+                    vertical: 18.0,
+                    horizontal: 25.0,
+                  ),
+                  child: Text(
+                    "Shop Now",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 )
               ],
