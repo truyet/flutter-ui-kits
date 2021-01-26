@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       theme: Theme.of(context).copyWith(
         platform: TargetPlatform.android,
         textTheme: GoogleFonts.interTextTheme(),
+        scaffoldBackgroundColor: Colors.white,
       ),
       builder: (context, widget) => ResponsiveWrapper.builder(
         Navigator(
