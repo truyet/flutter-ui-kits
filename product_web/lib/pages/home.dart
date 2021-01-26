@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:product_web/utils/colors.dart';
+import 'package:product_web/widgets/beats_ads.dart';
 import 'package:product_web/widgets/features.dart';
 import 'package:product_web/widgets/header.dart';
 import 'package:product_web/widgets/hero_section.dart';
+import 'package:product_web/widgets/more_products.dart';
 import 'package:product_web/widgets/product_slider.dart';
 import 'package:smooth_scroll_web/smooth_scroll_web.dart';
 
@@ -147,6 +149,8 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 Features(),
+                MoreProducts(),
+                BeatsAds(),
               ],
             ),
           ],
