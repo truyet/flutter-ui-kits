@@ -3,12 +3,12 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:product_web/utils/colors.dart';
 
 class ProductSlider extends StatelessWidget {
-  List<String> images = [
-    "assets/images/headphones2.png",
-    "assets/images/headphones3.png",
-    "assets/images/headphones4.png",
-    "assets/images/headphones5.png",
-    "assets/images/headphones6.png",
+  final List<String> headphones = [
+    "assets/images/headset2.png",
+    "assets/images/headset3.png",
+    "assets/images/headset4.png",
+    "assets/images/headset5.png",
+    "assets/images/headset6.png",
   ];
   @override
   Widget build(BuildContext context) {
@@ -28,6 +28,7 @@ class ProductSlider extends StatelessWidget {
           ),
           Expanded(
             child: ListView.separated(
+              physics: BouncingScrollPhysics(),
               separatorBuilder: (BuildContext context, int index) {
                 return SizedBox(
                   width: 15.0,
@@ -35,12 +36,19 @@ class ProductSlider extends StatelessWidget {
               },
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  width: 150.0,
-                  color: Colors.amber,
+                return Column(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        width: 150.0,
+                        child: Image.asset(images[index % 2]),
+                      ),
+                    ),
+                    Text()
+                  ],
                 );
               },
-              itemCount: 5,
+              itemCount: images.length * 2,
             ),
           ),
           Container(
