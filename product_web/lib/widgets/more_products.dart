@@ -8,29 +8,19 @@ class MoreProducts extends StatelessWidget {
   final List<Headphone> headphones = [
     Headphone(
       color: "Red",
-      image: "assets/images/headset2.png",
+      image: "assets/images/hsred.png",
       price: "\$249.99",
     ),
     Headphone(
       color: "Black",
-      image: "assets/images/headset3.png",
-      price: "\$249.99",
-    ),
-    Headphone(
-      color: "Silver",
-      image: "assets/images/headset4.png",
+      image: "assets/images/hsblack.png",
       price: "\$249.99",
     ),
     Headphone(
       color: "Blue",
-      image: "assets/images/headset5.png",
+      image: "assets/images/hsblue.png",
       price: "\$249.99",
     ),
-    Headphone(
-      color: "Yello",
-      image: "assets/images/headset6.png",
-      price: "\$249.99",
-    )
   ];
   @override
   Widget build(BuildContext context) {
@@ -98,37 +88,72 @@ class MoreProducts extends StatelessWidget {
                               ),
                             ),
                             Positioned(
+                              left: 20.0,
+                              right: 20.0,
+                              top: -30.0,
+                              child: Container(
+                                child: Image.asset(
+                                  headphones[currentIndex].image,
+                                  width: 180.0,
+                                ),
+                              ),
+                            ),
+                            Positioned(
                               bottom: -30.0,
                               height: 55.0,
                               left: 20.0,
                               right: 20.0,
                               child: Container(
-                                color: Colors.white,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color:
+                                          Color.fromRGBO(169, 176, 185, 0.42),
+                                      spreadRadius: 0,
+                                      blurRadius: 1.0,
+                                      offset: Offset(0, 0),
+                                    )
+                                  ],
+                                ),
                                 padding: EdgeInsets.symmetric(
                                   horizontal: 16.0,
                                   vertical: 8.0,
                                 ),
                                 child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Black",
+                                          headphones[currentIndex].color,
                                           style: TextStyle(
                                             fontSize: 17.0,
                                             fontWeight: FontWeight.w600,
                                           ),
                                         ),
                                         Text(
-                                          "\$244.99",
+                                          headphones[currentIndex].price,
                                           style: TextStyle(
                                             fontSize: 12.0,
                                           ),
                                         ),
                                       ],
-                                    )
+                                    ),
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      child: Container(
+                                        color: Color.fromRGBO(230, 235, 242, 1),
+                                        child: IconButton(
+                                          icon: Icon(
+                                              FlutterIcons.shoppingcart_ant),
+                                          onPressed: () {},
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
