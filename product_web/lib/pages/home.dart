@@ -46,7 +46,9 @@ class Home extends StatelessWidget {
                     ],
                   ),
                 ),
-                MoreProducts(),
+                Container(
+                  child: MoreProducts(),
+                ),
                 Container(
                   child: BeatsAds(),
                 ),
