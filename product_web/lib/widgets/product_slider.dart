@@ -41,7 +41,7 @@ class _ProductSliderState extends State<ProductSlider> {
       price: "\$249.99",
     ),
     Headphone(
-      color: "Yello",
+      color: "Yellow",
       image: "assets/images/headset6.png",
       price: "\$249.99",
     )

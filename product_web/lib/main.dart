@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           ],
           onPopPage: (route, result) => route.didPop(result),
         ),
-        maxWidth: 1200,
+        // maxWidth: 1200,
         minWidth: 480,
         defaultScale: true,
         breakpoints: [
