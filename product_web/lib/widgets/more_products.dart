@@ -84,8 +84,27 @@ class MoreProducts extends StatelessWidget {
                     return Builder(builder: (BuildContext context) {
                       return Container(
                         color: Colors.red,
-                        child: Column(
-                          children: [],
+                        width: 360.0,
+                        margin: EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              bottom: 0.0,
+                              left: 0.0,
+                              right: 0.0,
+                              child: Container(
+                                height: 120.0,
+                                color: Colors.green,
+                              ),
+                            ),
+                            Positioned(
+                              bottom: -30.0,
+                              height: 50.0,
+                              left: 0.0,
+                              right: 0.0,
+                              child: Container(),
+                            )
+                          ],
                         ),
                       );
                     });
