@@ -35,7 +35,7 @@ class MoreProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveWrapperWidget(
-      height: 330.0,
+      height: 430.0,
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 0.0),
         child: Column(
@@ -76,17 +76,17 @@ class MoreProducts extends StatelessWidget {
                     viewportFraction: 0.2,
                     autoPlay: true,
                     enableInfiniteScroll: true,
-                    height: 330.0,
+                    height: 200.0,
                   ),
                   items: headphones.map((i) {
                     int currentIndex = headphones.indexOf(i);
 
                     return Builder(builder: (BuildContext context) {
                       return Container(
-                        color: Colors.red,
                         width: 360.0,
                         margin: EdgeInsets.symmetric(horizontal: 10.0),
                         child: Stack(
+                          clipBehavior: Clip.none,
                           children: [
                             Positioned(
                               bottom: 0.0,
@@ -94,15 +94,44 @@ class MoreProducts extends StatelessWidget {
                               right: 0.0,
                               child: Container(
                                 height: 120.0,
-                                color: Colors.green,
+                                color: Color.fromRGBO(230, 235, 242, 1),
                               ),
                             ),
                             Positioned(
                               bottom: -30.0,
-                              height: 50.0,
-                              left: 0.0,
-                              right: 0.0,
-                              child: Container(),
+                              height: 55.0,
+                              left: 20.0,
+                              right: 20.0,
+                              child: Container(
+                                color: Colors.white,
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 16.0,
+                                  vertical: 8.0,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Black",
+                                          style: TextStyle(
+                                            fontSize: 17.0,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        Text(
+                                          "\$244.99",
+                                          style: TextStyle(
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
                             )
                           ],
                         ),
